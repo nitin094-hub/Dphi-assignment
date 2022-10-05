@@ -1,0 +1,18 @@
+.aiContentBoxContainer {
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+  .aiContentBoxText {
+    line-height: 25px;
+    h2 {
+      color: #ffffff;
+      font-size: 24px;
+    }
+    h4 {
+      font-weight: 300;
+      font-size: 16px;
+
+      color: #ffffff;
+    }
+  }
+}
