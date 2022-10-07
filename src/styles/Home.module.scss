@@ -21,7 +21,7 @@
         display: flex;
         flex-direction: column;
         gap: 2.5rem;
-        flex-basis: 55%;
+        flex-basis: 56%;
         h1 {
           font-size: 48px;
           color: #ffffff;
@@ -85,6 +85,41 @@
       flex-wrap: wrap;
       justify-content: center;
       margin: 3.5rem auto;
+    }
+  }
+  .challengesContainer {
+    background-color: #002a3b;
+    padding: 5rem 0;
+    .heading {
+      font-weight: 700;
+      font-size: 32px;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 4rem;
+    }
+    .challengeContent {
+      display: flex;
+      width: 82%;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 1rem;
+    }
+    .challengesTagContainer {
+      display: flex;
+      width: 64%;
+      margin: 2rem auto;
+    }
+    .allChallengesContainer {
+      background-color: #003145;
+      padding: 4rem 0;
+      .allChallengesSubContainer {
+        display: flex;
+        width: 80%;
+        margin: auto;
+        flex-wrap: wrap;
+        gap: 3rem;
+        justify-content: center;
+      }
     }
   }
 }
