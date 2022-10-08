@@ -17,9 +17,21 @@ import Tag from "../components/Tag";
 import ChallengeBox from "../components/ChallengeBox";
 import CoverBackground from "../components/CoverBackground";
 import challengesArray from "../dataSets/challengesArray";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [isFilterClicked, setFilterClicked] = useState(false);
+  const [status, setStatus] = useState([
+    { name: "All", isSelected: false },
+    { name: "Active", isSelected: false },
+    { name: "Upcoming", isSelected: false },
+    { name: "Past", isSelected: false },
+  ]);
+  const [levels, setLevels] = useState([
+    { name: "Easy", isSelected: false },
+    { name: "Medium", isSelected: false },
+    { name: "hard", isSelected: false },
+  ]);
   return (
     <>
       {isFilterClicked && <CoverBackground />}
@@ -36,9 +48,11 @@ function Home() {
                 diverse datasets allowing you to foster learning through
                 competitions.
               </h2>
-              <button>
-                <h4>Create Challenge</h4>
-              </button>
+              <Link to="/create-challenge">
+                <button>
+                  <h4>Create Challenge</h4>
+                </button>
+              </Link>
             </div>
             <div className={styles.bannerRightContainer}>
               <img src={rocket} alt="" />
@@ -99,10 +113,39 @@ function Home() {
             <Filter
               setFilterClicked={setFilterClicked}
               isFilterClicked={isFilterClicked}
+              status={status}
+              setStatus={setStatus}
+              levels={levels}
+              setLevels={setLevels}
             />
           </div>
           <div className={styles.challengesTagContainer}>
-            <Tag />
+            {status.map((item, idx) => {
+              return item.isSelected ? (
+                <Tag
+                  name={item.name}
+                  setVariable={setStatus}
+                  selectedVariable={item}
+                  variable={status}
+                  key={`tag${idx}`}
+                />
+              ) : (
+                <></>
+              );
+            })}
+            {levels.map((item, idx) => {
+              return item.isSelected ? (
+                <Tag
+                  name={item.name}
+                  setVariable={setLevels}
+                  selectedVariable={item}
+                  variable={levels}
+                  key={`tag${idx}`}
+                />
+              ) : (
+                <></>
+              );
+            })}
           </div>
           <div
             className={styles.allChallengesContainer}

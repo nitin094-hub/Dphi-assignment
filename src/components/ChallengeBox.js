@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/ChallengeBox.module.scss";
-
 import { BsCheck2Circle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function ChallengeBox({ name, image, status }) {
   return (
@@ -32,10 +32,12 @@ function ChallengeBox({ name, image, status }) {
             <span style={{ margin: "0 11px" }}></span> Mins
           </h6>
         </div>
-        <button className={styles.challengeButton}>
-          <BsCheck2Circle size={23} color="white" />
-          <h3>Participate Now</h3>
-        </button>
+        <Link to={"/more-about-challenge/1"} style={{ textDecoration: "none" }}>
+          <button className={styles.challengeButton}>
+            <BsCheck2Circle size={23} color="white" />
+            <h3>Participate Now</h3>
+          </button>
+        </Link>
       </div>
     </div>
   );

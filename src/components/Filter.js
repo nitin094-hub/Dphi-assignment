@@ -1,20 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Filter.module.scss";
 import { BsChevronDown } from "react-icons/bs";
 
-function Filter({ setFilterClicked, isFilterClicked }) {
-  const status = [
-    { name: "All", isSelected: false },
-    { name: "Active", isSelected: false },
-    { name: "Upcoming", isSelected: false },
-    { name: "Past", isSelected: false },
-    { name: "All", isSelected: false },
-  ];
-  const levels = [
-    { name: "Easy", isSelected: false },
-    { name: "Medium", isSelected: false },
-    { name: "hard", isSelected: false },
-  ];
+function Filter({
+  setFilterClicked,
+  isFilterClicked,
+  status,
+  setStatus,
+  levels,
+  setLevels,
+}) {
   return (
     <>
       {!isFilterClicked && (
@@ -48,6 +43,16 @@ function Filter({ setFilterClicked, isFilterClicked }) {
                     <div
                       className={styles.selectionBox}
                       style={item.isSelected ? { background: "#317e31" } : {}}
+                      onClick={() => {
+                        if (item.name === "All") {
+                          status.map((item) => {
+                            item.isSelected = !item.isSelected;
+                          });
+                        } else {
+                          item.isSelected = !item.isSelected;
+                        }
+                        setStatus([...status]);
+                      }}
                     ></div>
                     <h4>{item.name}</h4>
                   </div>
@@ -68,6 +73,10 @@ function Filter({ setFilterClicked, isFilterClicked }) {
                     <div
                       className={styles.selectionBox}
                       style={item.isSelected ? { background: "#317e31" } : {}}
+                      onClick={() => {
+                        item.isSelected = !item.isSelected;
+                        setLevels([...levels]);
+                      }}
                     ></div>
                     <h4>{item.name}</h4>
                   </div>
